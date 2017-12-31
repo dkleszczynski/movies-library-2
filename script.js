@@ -39,9 +39,7 @@ function createMoviesList() {
 		}
 		
 		let image = document.createElement("IMG");
-		image.width = 20;
-		image.height = 20;
-		
+				
 		if (item.seen == 'T') {
 			image.src = "img/checked.png";
 		} else {

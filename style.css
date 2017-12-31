@@ -1,0 +1,28 @@
+.moviesCounter {
+	font-weight: bold;
+}
+
+#moviesCountersContainer {
+	float: right;
+}
+
+#moviesListContainer {
+	margin: auto;
+	margin-top: 100px;
+	width: 50%;
+	clear: both;
+}
+
+#moviesList li {
+	margin: 5px;
+}
+
+#moviesList li:hover {
+	background-color: #80ff00;
+}
+
+#moviesList img {
+	width: 20px;
+	height: 20px;
+	margin-top: 3px;
+}
