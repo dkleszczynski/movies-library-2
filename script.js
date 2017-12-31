@@ -39,10 +39,28 @@ function createMoviesList() {
 		}
 		
 		let image = document.createElement("IMG");
-		image.src = "img/checked.png";
 		image.width = 20;
 		image.height = 20;
-		image.onclick = function() {alert("clicked");}
+		
+		if (item.seen == 'T') {
+			image.src = "img/checked.png";
+		} else {
+			image.src = "img/unchecked.png";
+		}
+		
+		image.onclick = function() {
+			if (item.seen == 'F') {
+				item.seen = 'T';
+				seenCount++;
+				image.src = "img/checked.png";
+			} else {
+				item.seen = 'F';
+				seenCount--;
+				image.src = "img/unchecked.png";
+			}
+
+			moviesCounterSeen.innerHTML = seenCount;
+		}
 		
 		listItem.appendChild(image);
 		moviesList.appendChild(listItem);
