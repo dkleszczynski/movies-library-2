@@ -26,3 +26,7 @@
 	height: 20px;
 	margin-top: 3px;
 }
+
+#moviesList span {
+	font-weight: bold;
+}

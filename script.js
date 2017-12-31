@@ -1,18 +1,20 @@
-let seenCount = 0;
+let seenCount;
 
 window.onload = function() {
 	let moviesCounterAll = document.getElementById("moviesCounterAll");
 	let moviesCounterSeen = document.getElementById("moviesCounterSeen");
 	let moviesList = document.getElementById("moviesList");
 	
-	initializeCounters();
+	countSeenMovies();	
 	createMoviesList();
-	
+		
 	moviesCounterSeen.innerHTML = seenCount;
 	moviesCounterAll.innerHTML = moviesData.length;
 }
 
-function initializeCounters() {
+function countSeenMovies() {
+	seenCount = 0;
+	
 	moviesData.forEach(function(item) {
 		if (item.seen == 'T') {
 			++seenCount;
@@ -21,8 +23,9 @@ function initializeCounters() {
 }
 
 function createMoviesList() {
+	let fields = ['id', 'title', 'year', 'genre', 'summary'];
+	
 	moviesData.forEach(function(item) {
-		let fields = ['id', 'title', 'year', 'genre', 'summary'];
 		let listItem = document.createElement('li');
 		
 		for (let i = 0; i < fields.length; i++) {
@@ -31,8 +34,6 @@ function createMoviesList() {
 			let value = document.createTextNode(item[fields[i]] + " ");
 			
 			span.appendChild(document.createTextNode(fields[i] + ": "));
-			span.style.fontWeight = 'bold';
-			
 			div.appendChild(span);
 			div.appendChild(value);
 			listItem.appendChild(div);
