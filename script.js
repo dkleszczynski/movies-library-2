@@ -1,23 +1,26 @@
+let seenCount = 0;
+
 window.onload = function() {
 	let moviesCounterAll = document.getElementById("moviesCounterAll");
 	let moviesCounterSeen = document.getElementById("moviesCounterSeen");
 	let moviesList = document.getElementById("moviesList");
-	let seenCount = 0;
 	
-	moviesData.forEach(function(item) {
-		if (item.seen == 'T') {
-			++seenCount;
-		}			
-	});
-	
+	initializeCounters();
 	createMoviesList();
 	
 	moviesCounterSeen.innerHTML = seenCount;
 	moviesCounterAll.innerHTML = moviesData.length;
 }
 
+function initializeCounters() {
+	moviesData.forEach(function(item) {
+		if (item.seen == 'T') {
+			++seenCount;
+		}			
+	});
+}
+
 function createMoviesList() {
-		
 	moviesData.forEach(function(item) {
 		let fields = ['id', 'title', 'year', 'genre', 'summary'];
 		let listItem = document.createElement('li');
@@ -44,5 +47,4 @@ function createMoviesList() {
 		listItem.appendChild(image);
 		moviesList.appendChild(listItem);
 	});
-	
 }
