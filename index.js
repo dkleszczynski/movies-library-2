@@ -1,3 +1,5 @@
+import setCounterOfTo from "/movies-counter.js";
+
 let seenCount;
 
 window.onload = function() {
@@ -7,9 +9,9 @@ window.onload = function() {
 	
 	countSeenMovies();	
 	createMoviesList();
-		
-	moviesCounterSeen.innerHTML = seenCount;
-	moviesCounterAll.innerHTML = moviesData.length;
+
+	setCounterOfTo(moviesCounterSeen, seenCount);
+	setCounterOfTo(moviesCounterAll, moviesData.length);
 }
 
 function countSeenMovies() {
@@ -58,7 +60,7 @@ function createMoviesList() {
 				image.src = "img/unchecked.png";
 			}
 
-			moviesCounterSeen.innerHTML = seenCount;
+			setCounterOfTo(moviesCounterSeen, seenCount);
 		}
 		
 		listItem.appendChild(image);
