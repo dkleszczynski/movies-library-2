@@ -1,4 +1,5 @@
 import setCounterOfTo from "/movies-counter.js";
+import Movie from "/movie.js";
 
 let seenCount;
 
