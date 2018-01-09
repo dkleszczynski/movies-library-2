@@ -28,10 +28,11 @@ window.onload = function() {
 	
 	storage.log("List after adding:");
 	
+	let title = prompt("Type the movie title:");
 	storage.set(
 		firstId, 
 		{
-			"title": "The Sinking of the RMS Titanic",
+			"title": title,
 			"year": 2016,
 			"genre": "romance-disaster",
 			"summary": "Youtoube fan made video based on the orginal movie.",
