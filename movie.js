@@ -1,6 +1,6 @@
 export default class Movie {
 	constructor(id, object) {
-		let fields = ['title', 'year', 'genre', 'summary'];
+		let fields = ['title', 'year', 'genre', 'summary', 'seen'];
 		this.id = id;
 		
 		for (let field of fields) {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Add movie</title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+	<body>
+		<div id="moviesCountersContainer">
+			<p>All: <span class="moviesCounter" id="anotherMoviesCounterAll"></span></p>
+			<p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
+		</div>
+		<div id="formContainer">
+		  Title:<br>
+		  <input type="text" id="inputTitle">
+		  <br>
+		  Year:<br>
+		  <input type="text" id="inputYear">
+		  <br>
+		  Genre:<br>
+		  <input list="listGenres">
+		  <datalist id="browsers">
+			<option value="Action">
+			<option value="Adventure">
+			<option value="Comedy">
+			<option value="Crime">
+			<option value="Drama">
+			<option value="Historical">
+			<option value="Horror">
+			<option value="Musical">
+			<option value="Romance">
+			<option value="Science Fiction">
+			<option value="War">
+			<option value="Western">
+		  </datalist> 
+     	  <br>
+		  Summary:<br>
+		  <textarea type="text" id="inputSummary" rows="5"></textarea>
+		  <br>
+		  Seen:<br>
+		  <input type="checkbox" id="inputSeen">
+		  <br>
+		  <a style="text-decoration:none;" href="index.html">
+			<button>Cancel</button>
+		  </a>
+		  <button id="btnAdd">Add</button>
+     	</div>
+		<script src="add.js"></script>
+	</body>
+</html>
