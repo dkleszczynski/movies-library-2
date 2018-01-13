@@ -9,14 +9,12 @@ export default class MoviesStorage {
 	
 	constructor(){
 		if(!instance){
-              instance = this;
+		    instance = this;
+			this.movies = [];
+			this.nextId = 1; 
+			this.init();
         }
-		
-		this.movies = [];
-		this.nextId = 1; 
-		
-		this.init();
-	}
+    }
 	
 	init() {
 		let storageMovies = JSON.parse(localStorage.getItem("movies"));
