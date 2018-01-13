@@ -2,69 +2,23 @@ import setCounterOfTo from "/movies-counter.js";
 import Movie from "/movie.js";
 import MoviesStorage from "/movies-storage.js";
 
-let seenCount;
-
 window.onload = function() {
 	let moviesCounterAll = document.getElementById("moviesCounterAll");
 	let moviesCounterSeen = document.getElementById("moviesCounterSeen");
 	let moviesList = document.getElementById("moviesList");
+
 	let storage = new MoviesStorage();
+	storage.countSeenMovies();	
+	createMoviesList(storage);
 	
-	let firstId = storage.set({
-			"title": "The Sinking of Kursk.",
-			"year": 2016,
-			"genre": "romance-disaster",
-			"summary": "Youtoube fan made video based on the orginal movie.",
-			"seen": "T"
-		});
-	
-	let secondId = storage.set({
-			"title": "Some old movie",
-			"year": 1962,
-			"genre": "drama",
-			"summary": "One of the most popular drama movies in early 60s.",
-			"seen": "F"
-		});
-	
-	storage.log("List after adding:");
-	
-	let title = prompt("Type the movie title:");
-	storage.set(
-		firstId, 
-		{
-			"title": title,
-			"year": 2016,
-			"genre": "romance-disaster",
-			"summary": "Youtoube fan made video based on the orginal movie.",
-			"seen": "T"
-		});
-	
-	storage.log("List after updating:");
-	
-	storage.remove(secondId);
-	storage.log("List after removing:");	
-	
-	countSeenMovies();	
-	createMoviesList();
-
-	setCounterOfTo(moviesCounterSeen, seenCount);
-	setCounterOfTo(moviesCounterAll, moviesData.length);
+	setCounterOfTo(moviesCounterSeen, storage.seenCount);
+	setCounterOfTo(moviesCounterAll, storage.get().length);
 }
 
-function countSeenMovies() {
-	seenCount = 0;
-	
-	moviesData.forEach(function(item) {
-		if (item.seen === 'T') {
-			++seenCount;
-		}			
-	});
-}
-
-function createMoviesList() {
+function createMoviesList(storage) {
 	let fields = ['id', 'title', 'year', 'genre', 'summary'];
 	
-	moviesData.forEach(function(item) {
+	storage.get().forEach(function(item) {
 		let listItem = document.createElement('li');
 		
 		for (let field of fields) {
@@ -80,24 +34,25 @@ function createMoviesList() {
 		
 		let image = document.createElement("IMG");
 				
-		if (item.seen === 'T') {
+		if (item.seen === true) {
 			image.src = "img/checked.png";
 		} else {
 			image.src = "img/unchecked.png";
 		}
 		
 		image.onclick = function() {
-			if (item.seen === 'F') {
-				item.seen = 'T';
-				seenCount++;
+			if (item.seen === false) {
+				item.seen = true;
+				storage.seenCount++;
 				image.src = "img/checked.png";
 			} else {
-				item.seen = 'F';
-				seenCount--;
+				item.seen = false;
+				storage.seenCount--;
 				image.src = "img/unchecked.png";
 			}
-
-			setCounterOfTo(moviesCounterSeen, seenCount);
+			
+			storage.set(item.id, item);
+			setCounterOfTo(moviesCounterSeen, storage.seenCount);
 		}
 		
 		listItem.appendChild(image);

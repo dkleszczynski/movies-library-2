@@ -3,18 +3,23 @@ import Movie from "/movie.js";
 let instance = null;
 
 export default class MoviesStorage {
-	static getInstance() {
-		return new MoviesStorage();
-	}
-	
 	constructor(){
 		if(!instance){
 		    instance = this;
 			this.movies = [];
 			this.nextId = 1; 
 			this.init();
+			this.countSeenMovies();
         }
     }
+	
+	get seenCount() {
+		return this._seenCount;
+	}
+
+	set seenCount(value) {
+		this._seenCount = value;
+  }
 	
 	init() {
 		let storageMovies = JSON.parse(localStorage.getItem("movies"));
@@ -27,7 +32,7 @@ export default class MoviesStorage {
 				"year": 1994,
 				"genre": "drama",
 				"summary": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-				"seen": "T"
+				"seen": true
     });
 	
 			this.set({
@@ -35,7 +40,7 @@ export default class MoviesStorage {
 				"year": 1972,
 				"genre": "crime",
 				"summary": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-				"seen": "T"
+				"seen": true
 			});
 			
 			this.set({
@@ -43,7 +48,7 @@ export default class MoviesStorage {
 				"year": 2008,
 				"genre": "action",
 				"summary": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, the Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-				"seen": "T"
+				"seen": true
 			});
 			
 			this.set({
@@ -51,7 +56,7 @@ export default class MoviesStorage {
 				"year": 1957,
 				"genre": "drama",
 				"summary": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
-				"seen": "F"
+				"seen": false
 			});
 			
 			this.set({
@@ -59,7 +64,7 @@ export default class MoviesStorage {
 				"year": 1993,
 				"genre": "biography",
 				"summary": "In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazi Germans.",
-				"seen": "F"
+				"seen": false
 			});
 			
 			this.set({
@@ -67,7 +72,7 @@ export default class MoviesStorage {
 				"year": 1994,
 				"genre": "crime",
 				"summary": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-				"seen": "T"
+				"seen": true
 			});
 			
 			this.set({
@@ -75,7 +80,7 @@ export default class MoviesStorage {
 				"year": 1966,
 				"genre": "western",
 				"summary": "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
-				"seen": "F"
+				"seen": false
 			});
     	}
 	}
@@ -136,6 +141,16 @@ export default class MoviesStorage {
 		instance.movies.splice(index, 1);
 		localStorage.setItem("movies", JSON.stringify(this.movies));
 	}
+	
+	countSeenMovies() {
+		instance.seenCount = 0;
+		instance.movies.forEach(function(item) {
+			
+			if (item.seen === true) {
+				++instance.seenCount;
+			}			
+		});
+    }
 	
 	getFreeId() {
 		while (instance.movies.findIndex(m => m.id === this.nextId) != -1) {

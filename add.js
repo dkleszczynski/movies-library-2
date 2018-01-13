@@ -1,10 +1,20 @@
+import setCounterOfTo from "/movies-counter.js";
 import Movie from "/movie.js";
 import MoviesStorage from "/movies-storage.js";
+
+let storage;
+let moviesCounterAll;
+let moviesCounterSeen;
 
 window.onload = function() {
 	let btnAdd = document.getElementById("btnAdd");
 	let listGenres = document.getElementById("listGenres");
-		
+	moviesCounterAll = document.getElementById("anotherMoviesCounterAll");
+	moviesCounterSeen = document.getElementById("anotherMoviesCounterSeen");
+	storage = new MoviesStorage();
+	
+	setCounterOfTo(moviesCounterSeen, storage.seenCount);
+	setCounterOfTo(moviesCounterAll, storage.get().length);
 	btnAdd.onclick = addMovie;
 }
 
@@ -12,15 +22,22 @@ function addMovie() {
 	if (!validate()) {
 		return;
 	}
-	
-	let storage = new MoviesStorage();
+		
 	storage.set({
 		"title": inputTitle.value,
 		"year": inputYear.value,
 		"genre": inputGenres.value,
 		"summary": inputSummary.value,
-		"seen": inputSeen.checked
+		"seen": Boolean(inputSeen.checked)
 	});
+	
+	if (Boolean(inputSeen.checked) === true) {
+		storage.seenCount++;
+    }
+	
+	setCounterOfTo(moviesCounterSeen, storage.seenCount);
+	setCounterOfTo(moviesCounterAll, storage.get().length);
+	clearFields();
 }
 
 function validate() {
@@ -42,4 +59,12 @@ function validate() {
 	}
 	
 	return true;
+}
+
+function clearFields() {
+	inputTitle.value = "";
+	inputYear.value = "";
+    inputGenres.value = "";
+	inputSummary.value = "";
+	inputSeen.checked = false;
 }
