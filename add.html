@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title>Add movie</title>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="stylesheet" type="text/css" href="add.css"/>
     </head>
 	<body>
 		<div id="moviesCountersContainer">
@@ -13,12 +13,14 @@
 		<div id="formContainer">
 		  Title:<br>
 		  <input type="text" id="inputTitle">
+		  <label id="errorLabelTitle" class="errorLabels"></label>
 		  <br>
 		  Year:<br>
 		  <input type="text" id="inputYear">
+		  <label id="errorLabelYear" class="errorLabels"></label>
 		  <br>
 		  Genre:<br>
-		  <input id="inputGenres" list="listGenres" >
+		  <input id="inputGenre" list="listGenres" >
 		  <datalist id="listGenres">
 			<option value="Action">
 			<option value="Adventure">
@@ -33,6 +35,7 @@
 			<option value="War">
 			<option value="Western">
 		  </datalist> 
+		  <label id="errorLabelGenre" class="errorLabels"></label>
      	  <br>
 		  Summary:<br>
 		  <textarea type="text" id="inputSummary" rows="5"></textarea>
