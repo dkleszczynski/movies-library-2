@@ -7,11 +7,21 @@
     </head>
 	<body>
 		<div id="moviesCountersContainer">
-			<p>All: <span class="moviesCounter" id="moviesCounterAll"></span></p>
-			<p>Viewed: <span class="moviesCounter" id="moviesCounterSeen"></span></p>
+			<p>
+				All: <span class="moviesCounter" id="moviesCounterAll"></span>
+			</p>
+			<p>
+				Viewed: <span class="moviesCounter" id="moviesCounterSeen"></span>
+			</p>
 		</div>
-		<div id="moviesListContainer">    
+		<div id="moviesListContainer">
+			<div id="mainLabelContainer">
+				<label>Movies list</label>
+			</div>
 			<ul id="moviesList"></ul>
+			<a name="bottomPart" href="Add">
+				<button id="btnAdd">Add</button>
+			</a>
 		</div>
 		<script type="module" src="/index.js"></script>
 	</body>

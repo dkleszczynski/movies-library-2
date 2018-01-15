@@ -1,4 +1,65 @@
+body {
+	text-align: center;
+	font-size: 1.3rem;
+}
+
+a {
+	text-decoration:none;
+}
+
+button {
+	width: 47%;
+	margin: 0px;
+}
+
+label {
+	font-weight: bold;
+}
+
 .errorLabels {
+	font-size: 1rem;
 	font-weight:bold;
 	color: red;
+	display: block;
+	margin-top: 5px;
+}
+
+.movieInputs {
+	min-width: 300px;
+}
+
+.moviesCounter {
+	font-weight: bold;
+}
+
+#btnContainer {
+	margin: 10px 5px 5px 5px;
+}
+
+#inputSeen {
+	position: relative;
+	background-color: pink;
+	transform: scale(1.6);
+	transform: translate(0, 2px);
+}
+
+#formContainer {
+	display: inline-block;
+	clear: both;
+	margin-top: 100px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+#mainLabel {
+	display: block;
+	background-color: deepskyblue;
+	margin: -5px;
+	margin-bottom: 5px;
+}
+
+#moviesCountersContainer {
+	float: right;
+	padding: 5px;
+	border: 2px solid black;
 }

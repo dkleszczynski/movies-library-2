@@ -55,11 +55,11 @@ function validate() {
 		return false;
 	}
 		
-	var pattern = /^\d{4}$/;
+	var pattern = /^[1-9]\d{3}$/;
 	
     if (!pattern.test(inputYear.value)) {
 		inputYear.style.border = "2px solid salmon";
-		errorLabelYear.innerText = "A year must consist of 4 digits!";
+		errorLabelYear.innerText = "A year must be a number that consists of 4 digits!";
 		return false;
 	}
 	

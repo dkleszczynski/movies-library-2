@@ -11,42 +11,40 @@
 			<p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
 		</div>
 		<div id="formContainer">
-		  Title:<br>
-		  <input type="text" id="inputTitle">
-		  <label id="errorLabelTitle" class="errorLabels"></label>
-		  <br>
-		  Year:<br>
-		  <input type="text" id="inputYear">
-		  <label id="errorLabelYear" class="errorLabels"></label>
-		  <br>
-		  Genre:<br>
-		  <input id="inputGenre" list="listGenres" >
-		  <datalist id="listGenres">
-			<option value="Action">
-			<option value="Adventure">
-			<option value="Comedy">
-			<option value="Crime">
-			<option value="Drama">
-			<option value="Historical">
-			<option value="Horror">
-			<option value="Musical">
-			<option value="Romance">
-			<option value="Science Fiction">
-			<option value="War">
-			<option value="Western">
-		  </datalist> 
-		  <label id="errorLabelGenre" class="errorLabels"></label>
-     	  <br>
-		  Summary:<br>
-		  <textarea type="text" id="inputSummary" rows="5"></textarea>
-		  <br>
-		  Seen:<br>
-		  <input type="checkbox" id="inputSeen">
-		  <br>
-		  <a style="text-decoration:none;" href="index.html">
-			<button>Cancel</button>
-		  </a>
-		  <button id="btnAdd">Add</button>
+			<label id="mainLabel">Add movie</label><br>
+			<label>Title:</label><br>
+			<input type="text" id="inputTitle" class="movieInputs"><br>
+			<label id="errorLabelTitle" class="errorLabels"></label><br>
+			<label>Year:</label><br>
+			<input type="text" id="inputYear" class="movieInputs"><br>
+			<label id="errorLabelYear" class="errorLabels"></label><br>
+			<label>Genre:</label><br>
+			<input id="inputGenre" class="movieInputs" list="listGenres">
+				<datalist id="listGenres">
+				<option value="Action">
+				<option value="Adventure">
+				<option value="Comedy">
+				<option value="Crime">
+				<option value="Drama">
+				<option value="Historical">
+				<option value="Horror">
+				<option value="Musical">
+				<option value="Romance">
+				<option value="Science Fiction">
+				<option value="War">
+				<option value="Western">
+			</datalist><br>
+			<label id="errorLabelGenre" class="errorLabels"></label><br>
+			<label>Summary:</label><br>
+			<textarea type="text" id="inputSummary" class="movieInputs" rows="5" cols="30"></textarea><br>
+			<label>Seen:</label>
+			<input type="checkbox" id="inputSeen"><br>
+			<div id="btnContainer">
+				<a href="index.html#bottomPart">
+					<button>Cancel</button>
+				</a>
+				<button id="btnAdd">Add</button>
+			</div>
      	</div>
 		<script type="module" src="add.js"></script>
 	</body>
